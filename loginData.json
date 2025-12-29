@@ -1,0 +1,14 @@
+{
+    "url" :"https://dev.skpt.com/login",
+    "internalurl":"https://dev.skpt.com/home/internalproject",
+    "financeurl":"https://dev.skpt.com/home/projects/project",
+    "sampleurl":"https://dev.skpt.com/home/SubmissionForms",
+    "projectmanagerurl":"https://dev.skpt.com/home/projects/project",
+    "platformuserurl":"https://dev.skpt.com/home/projects/project",
+    "internaluser":"test@internal-pd.com",
+    "financeuser": "Ttest@finance-user.com",
+    "sampleuser": "test@sample-management-user.com",
+    "projectmanageruser": "test@project-manager.com",
+    "platformuser":"test@platform-admin.com",
+    "password":"Qx7v!cP9@jRt"
+}
