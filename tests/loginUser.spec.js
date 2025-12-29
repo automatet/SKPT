@@ -9,7 +9,8 @@ test('login internal user', async ({page})=>{
     await expect(page).toHaveURL(LoginData.url)
    
     await loginuser.internaluser_login()   
-    await page.goto(LoginData.internalurl)
+    await page.waitForTimeout(3000);
+    await expect(page).toHaveURL(LoginData.internalurl)
  
  
 })
@@ -20,7 +21,10 @@ test('login finance user', async ({page})=>{
     await expect(page).toHaveURL(LoginData.url)
    
     await loginuser.financeuser_login()   
-    await page.goto(LoginData.financeurl)
+    await page.waitForTimeout(3000);
+   
+    await expect(page).toHaveURL(LoginData.financeurl)
+
 })
 test('login sampleuser user', async ({page})=>{
  
@@ -29,8 +33,10 @@ test('login sampleuser user', async ({page})=>{
     await expect(page).toHaveURL(LoginData.url)
    
     await loginuser.sampleuser_login()   
-    await page.goto(LoginData.sampleurl)
- 
+    await page.waitForTimeout(3000);
+
+    await expect(page).toHaveURL(LoginData.sampleurl)
+    
  
 })
 test('login project manager user', async ({page})=>{
@@ -40,7 +46,9 @@ test('login project manager user', async ({page})=>{
     await expect(page).toHaveURL(LoginData.url)
    
     await loginuser.projectmanageruser_login()   
-    await page.goto(LoginData.projectmanagerurl)
+    await page.waitForTimeout(3000);
+
+    await expect(page).toHaveURL(LoginData.projectmanagerurl)
  
  
 })
@@ -51,6 +59,8 @@ test('login platformuser login', async ({page})=>{
     await expect(page).toHaveURL(LoginData.url)
    
     await loginuser.platformuser_login()   
-    await page.goto(LoginData.platformuserurl)
+    await page.waitForTimeout(3000);
+
+    await expect(page).toHaveURL(LoginData.platformuserurl)
  
 })
