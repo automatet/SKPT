@@ -1,38 +1,37 @@
 import {test, expect} from '@playwright/test'
 import LoginData from '../loginData.json'
 import client from '../pages/client.js'
+import LoginPage from '../pages/loginPage.js'
 
-test('login sampleuser', async ({page})=>{
+test('verify sampleuser client form', async ({page})=>{
  
-  const loginuser = new client(page)
-    await page.goto(LoginData.url)
-    await expect(page).toHaveURL(LoginData.url)
-   
-    await loginuser.sampleuser_login()   
-    await page.waitForTimeout(3000);
-    
+  const clientuser = new client(page)
+
+    const loginuser = new LoginPage(page)
+
+    await loginuser.login(LoginData.sampleuser)   
     await expect(page).toHaveURL(LoginData.sampleurl)
-    await page.waitForTimeout(3000);
-    await loginuser.click_Client();
+    
+    await clientuser.click_Client();
     await page.waitForTimeout(2000);
-    await loginuser.client_form()
+    await clientuser.client_form()
     await page.waitForTimeout(2000);
-    await loginuser.click_internal();
+    await clientuser.click_internal();
     await page.waitForTimeout(2000);
-    await loginuser.rem()
+    await clientuser.rem()
     await page.waitForTimeout(5000);
-    await loginuser.click_proceed()
+    await clientuser.click_proceed()
      await page.waitForTimeout(5000);
 
-     await loginuser.click_proceed1()
+     await clientuser.click_proceed1()
      await page.waitForTimeout(5000);
-     await loginuser.click_proceed2()
+     await clientuser.click_proceed2()
      await page.waitForTimeout(5000);
-     await loginuser.click_proceed3()
+     await clientuser.click_proceed3()
      await page.waitForTimeout(5000);
-     await loginuser.click_proceed4()
+     await clientuser.click_proceed4()
      await page.waitForTimeout(5000);
-     await loginuser.click_submit()
+     await clientuser.click_submit()
      
 
 })
