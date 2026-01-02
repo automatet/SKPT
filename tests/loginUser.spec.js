@@ -8,10 +8,12 @@ import LoginData from '../loginData.json'
  
 test('login internal user', async ({page})=>{
  
-  const loginuser = new LoginPage(page)
- 
+    const loginuser = new LoginPage(page)
     await loginuser.login(LoginData.internaluser)   
     await expect(page).toHaveURL(LoginData.internalurl)
+
+   
+  
  
  
 })
