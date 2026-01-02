@@ -12,12 +12,8 @@ import ReceivedStatusLIMSProjectIDgraph from '../pages/ReceivedStateLIMSProjectI
 test('Test Sample manager add LIMS Project ID successfully', async ({page})=>{
  
   const loginuser = new LoginPage(page)
-    await page.goto(LoginData.url)
-    await expect(page).toHaveURL(LoginData.url)
-   
-    await loginuser.sampleuser_login()   
-    await page.waitForTimeout(3000);
 
+    await loginuser.login(LoginData.sampleuser)   
     await expect(page).toHaveURL(LoginData.sampleurl)
 
     const ObjSubmissionFormPage = new SubmissionFormsPage(page);
@@ -38,12 +34,8 @@ test('Test Sample manager add LIMS Project ID successfully', async ({page})=>{
 test('Test user gets This LIMS Project ID already exists under another project error message', async ({page})=>{
  
   const loginuser = new LoginPage(page)
-    await page.goto(LoginData.url)
-    await expect(page).toHaveURL(LoginData.url)
-   
-    await loginuser.sampleuser_login()   
-    await page.waitForTimeout(3000);
 
+    await loginuser.login(LoginData.sampleuser)   
     await expect(page).toHaveURL(LoginData.sampleurl)
 
     const ObjSubmissionFormPage = new SubmissionFormsPage(page);
@@ -63,12 +55,8 @@ test('Test user gets This LIMS Project ID already exists under another project e
 test('Test Sample manager Edit LIMS Project ID Successfully', async ({page})=>{
  
   const loginuser = new LoginPage(page)
-    await page.goto(LoginData.url)
-    await expect(page).toHaveURL(LoginData.url)
-   
-    await loginuser.sampleuser_login()   
-    await page.waitForTimeout(3000);
 
+    await loginuser.login(LoginData.sampleuser)   
     await expect(page).toHaveURL(LoginData.sampleurl)
 
     const ObjSubmissionFormPage = new SubmissionFormsPage(page);
@@ -92,12 +80,8 @@ test('Test Sample manager Edit LIMS Project ID Successfully', async ({page})=>{
 test('Test Sample manager changes state from Submitted to InRevision State', async ({page})=>{
  
   const loginuser = new LoginPage(page)
-    await page.goto(LoginData.url)
-    await expect(page).toHaveURL(LoginData.url)
-   
-    await loginuser.sampleuser_login()   
-    await page.waitForTimeout(3000);
 
+    await loginuser.login(LoginData.sampleuser)   
     await expect(page).toHaveURL(LoginData.sampleurl)
     
 
@@ -111,12 +95,8 @@ test('Test Sample manager changes state from Submitted to InRevision State', asy
 
 test('Test Sample manager clicks on LIMS Project ID for Received state to view graph', async ({page})=>{
     const loginuser = new LoginPage(page)
-    await page.goto(LoginData.url)
-    await expect(page).toHaveURL(LoginData.url)
-   
-    await loginuser.sampleuser_login()   
-    await page.waitForTimeout(3000);
 
+    await loginuser.login(LoginData.sampleuser)   
     await expect(page).toHaveURL(LoginData.sampleurl)
 
     const ObjLIMSProjectIDReceivedbtngraph = new ReceivedStatusLIMSProjectIDgraph(page);
