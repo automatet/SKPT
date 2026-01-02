@@ -6,27 +6,18 @@ import Internalproject from '../pages/project_home.js'
 test('login internal user', async ({page})=>{
  
   const loginuser = new LoginPage(page)
-    await page.goto(LoginData.url)
-    await expect(page).toHaveURL(LoginData.url)
-   
-    await loginuser.internaluser_login()  
-    
- 
+    await loginuser.login(LoginData.internaluser)   
+    await expect(page).toHaveURL(LoginData.internalurl)
+
  
 })
 
 test('Create internal form', async ({page})=>{
  
   const loginuser = new LoginPage(page)
-    await page.goto(LoginData.url)
-    await expect(page).toHaveURL(LoginData.url)
-   
-    await page.waitForTimeout(5000)
-    
-    await loginuser.internaluser_login()  
-   
- 
-    //await page.waitForTimeout(5000)
+    await loginuser.login(LoginData.internaluser)   
+    await expect(page).toHaveURL(LoginData.internalurl)
+
     
     const Internal = new Internalproject(page)
     await Internal.formid()
