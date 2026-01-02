@@ -25,13 +25,7 @@ import LoginData from '../loginData.json'
         
     }
 
-    async sampleuser_login(){
-        await this.useremail.fill(LoginData.sampleuser)
-        await this.userpasword.fill(LoginData.password)     
-        await this.loginbtn.click()
 
-
-    }
     async click_Client(){
         await this.clickClient.click()
     }
