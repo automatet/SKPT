@@ -2,7 +2,7 @@ import {test, expect} from '@playwright/test'
 import LoginData from '../loginData.json'
 import client from '../pages/client.js'
 
-test('login sampleuser user', async ({page})=>{
+test('login sampleuser', async ({page})=>{
  
   const loginuser = new client(page)
     await page.goto(LoginData.url)

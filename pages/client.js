@@ -37,15 +37,11 @@ import LoginData from '../loginData.json'
         await this.clickClient.click()
     }
     async client_form(){
-        //await this.clickClient.click()
-         //await this.searchButton.click()
-         //await this.fillData.fill('kavi')
         await this.ClickClientname.click()
     }
     async click_internal(){
         await this.clickInternal.click()
     }
-        //await this.clickInternal.click()
     async  rem(){  
         await this.searchButton.click()
         await this.fillData.fill('prer_')
