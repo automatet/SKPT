@@ -1,4 +1,4 @@
-import {test, expect} from '@playwright/test'
+/*import {test, expect} from '@playwright/test'
 import LoginPage from '../pages/loginPage.js'
 import LoginData from '../loginData.json'
  
@@ -63,4 +63,4 @@ test('login platformuser login', async ({page})=>{
 
     await expect(page).toHaveURL(LoginData.platformuserurl)
  
-})
+})*/

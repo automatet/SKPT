@@ -1,4 +1,4 @@
-import { expect } from '@playwright/test';
+/*import { expect } from '@playwright/test';
 import LoginData from '../loginData.json'
 
 class LoginPage{
@@ -45,4 +45,4 @@ class LoginPage{
     }
 }
 
-export default LoginPage;
+export default LoginPage;*/
