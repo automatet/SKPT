@@ -9,7 +9,7 @@ test('login sampleuser', async ({page})=>{
     await expect(page).toHaveURL(LoginData.url)
    
     await loginuser.sampleuser_login()   
-    await page.waitForTimeout(6000);
+    await page.waitForTimeout(3000);
     
     await expect(page).toHaveURL(LoginData.sampleurl)
     await page.waitForTimeout(6000);
