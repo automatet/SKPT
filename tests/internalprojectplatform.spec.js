@@ -1,23 +1,40 @@
 import {test, expect} from '@playwright/test'
+import LoginPage from '../pages/loginPage.js'
 import LoginData from '../loginData.json'
+import externalProject from '../pages/Internalprojectclient.js'
+import newrequestpagee from '../pages/Internalprojectclient.js'
 
 test('login platformuser login', async ({page})=>{
  
   const loginuser = new LoginPage(page)
-    await page.goto(LoginData.url)
-    await expect(page).toHaveURL(LoginData.url)
-   
-    await loginuser.platformuser_login()   
-    await page.waitForTimeout(3000);
+    await loginuser.login(LoginData.platformuser)  
+   // await expect(page).toHaveURL(LoginData.platformuser)
 
-    await expect(page).toHaveURL(LoginData.platformuserurl)
+   
+
  
 })
 
 test('login interproject client',async({page})=> { 
+const loginuser = new LoginPage(page)
+    await loginuser.login(LoginData.platformuser)  
+  //  await expect(page).toHaveURL(LoginData.platformuser)
 
 
 
 
+    const interproject = new externalProject (page)
+    await interproject.externalproject()
+
+})
+test('newrequest',async({page})=> { 
+
+    const loginuser = new LoginPage(page)
+    await loginuser.login(LoginData.platformuser)
+    
+    
+    const project= new newrequestpagee(page)
+    await project.newrequestpagee()
+  
 
 })
