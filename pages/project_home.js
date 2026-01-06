@@ -10,7 +10,7 @@ class Projecthome{
         this.useremail = page.locator("//input[@id='email']")
         this.userpasword = page.locator("//input[@id='password']")
         this.loginbtn = page.locator("//button[@type='submit']")
-        this.project_ID = page.locator("//button[normalize-space()='8055']")
+        this.project_ID = page.locator("//button[normalize-space()='4' and @class='text-link view-forms-btn']")
         this.form_ID = page.locator("//button[normalize-space()='FID1236']")
         this.NewrequestID = page.locator("//button[contains(text(),' New Request ')]")
         this.Shippingdate = page.locator("//i[@class='bi bi-calendar']")
@@ -55,6 +55,8 @@ class Projecthome{
         this.sampleLotNo = page.locator("//div[@role='gridcell' and @tabulator-field='sampleLotNumber']")
         this.ProtocolName = page.locator("//div[@role='gridcell' and @tabulator-field='protocolNameAndNumber']")
         this.StorageCondition = page.locator("//div[@role='gridcell' and @tabulator-field='storageCondition']")
+        this.Terms$Condition = page.locator("//input[@id='terms-conditions']")
+        this.FinalSubmit = page.locator("//button[normalize-space()='Submit' and @id='submit-button']")
      
        }   
        async formid(){
@@ -153,11 +155,8 @@ await StoreName.fill("-20C");
 await StoreName.press('Enter');
  
 await this.SampInfoSave.click();
-      //await this.Specification.click();
-      //await this.DocUpload.click();
-      //await this.DocType.click();
-      //await this.DocTypeOption.selectOption();
-      
+await this.Terms$Condition.click();
+await this.FinalSubmit.click();
  }
      
 }
