@@ -18,6 +18,7 @@ class ClientsPage {
 
   async selectClient(clientName) {
     await this.searchBox.fill(clientName);
+    await this.page.waitForTimeout(2000);
     await this.page.locator(`//button[contains(normalize-space(),'${clientName}')]`).click();
     //await this.page.locator("//button[normalize-space()='First client1']").click();
 

@@ -16,6 +16,7 @@ await this.internalproject.click()
 
 async addprojects(){
 await this.addproject.click()
+await this.page.waitForTimeout(3000);
 }
 
 
