@@ -1,4 +1,6 @@
 import { expect } from '@playwright/test';
+import LoginData from '../loginData.json'
+import sktp from '../sktp.json'
 import { TIMEOUT } from 'node:dns';
 class Details {
  
@@ -7,8 +9,10 @@ class Details {
 
         const today = new Date();
         const formattedDate = today.toISOString().split('T')[0];
+        const projectId = `test${Date.now()}`
 
         this.page = page;
+        this.projectidverify = page.locator(`//p[@class='static-field'][normalize-space()='${projectId}']`)
         this.currentdate =page.locator("//input[@id='plannedDate']");
         this.ponumber = page.locator("//input[@id='poNumber']")
         this.samplingno = page.locator("//input[@id='samplingPlanNumber']")
@@ -56,10 +60,18 @@ class Details {
 
     }
 
+// async verifyid(projectId) {
+//     // Correct assertion for <p> element
+//     //await expect(this.projectidverify).toHaveText(projectId);
+//     await expect(this.projectidverify).toHaveText(projectId, { timeout: 5000 });
+// }
+
     async filldate(formattedDate){
         await this.currentdate.fill(formattedDate)
+        await expect(this.currentdate).toHaveValue(formattedDate);
 
     }
+
 
     async fillsampledetails(pon,sample)
     {
@@ -67,7 +79,7 @@ class Details {
         await this.ponumber.fill(pon)
         await this.samplingno.fill(sample)
         await this.saveandproceed.click()
-        //await this.page.waitForTimeout(3000);
+        
         
     }
 
@@ -78,7 +90,6 @@ class Details {
     await this.specifction.check()
     await this.turnaroundtime.check()
     await this.saver.click()
-   //await this.page.waitForTimeout(3000);
 
    
 }
@@ -92,7 +103,6 @@ async safety(){
     await this.specialhandle.check();
     await this.specialdisposal.check();
     await this.savveandproceed.click();
-    //await this.page.waitForTimeout(3000);
 
 
 }
@@ -101,83 +111,83 @@ async shipper(){
    await this.shipmentpacking.check()
 }
 
-async couriernumbers (catno){
-    await this.courierno.fill(catno)
+async couriernumbers (){
+    await this.courierno.fill(sktp.protocolnoi)
     await this.savveandproceed.click()
-   //await this.page.waitForTimeout(3000);
+   
 }
 
 async formfill(){
 
 await this.quantity.click();
 const quantityEditor = this.page.locator('.tabulator-editing input');
-await quantityEditor.fill('12');
+await quantityEditor.fill(sktp.quantityi);
 await quantityEditor.press('Enter');
 
 await this.samplevolume.click();
 const sampleedit=this.page.locator('.tabulator-editing input');
-await sampleedit.fill('200');
+await sampleedit.fill(sktp.samplevolumei);
 await sampleedit.press('Enter');
 
 await this.sammpleunits.click();
 const samplefill =this.page.locator('.tabulator-editing input');
-await samplefill.fill('L');
+await samplefill.fill(sktp.sammpleunitsi);
 await samplefill.press('Enter');
 
 await this.conainervolume.click()
 const container =this.page.locator('.tabulator-editing input');
-await container.fill('250');
+await container.fill(sktp.conainervolumei);
 await container.press('Enter');
 
    await this.containerunit.click()
    const contedunit =this.page.locator('.tabulator-editing input');
-   await contedunit.fill('ug');
+   await contedunit.fill(sktp.containeruniti);
    await contedunit.press('Enter');
 
 await this.containertype.click()
 const conttype = this.page.locator('.tabulator-editing input');
-await conttype.fill('boxes');
+await conttype.fill(sktp.containertypei);
 await conttype.press('Enter');
 
  await this.sap.click()
  const saper = this.page.locator('.tabulator-editing input');
- await saper.fill('1067');
+ await saper.fill(sktp.sapi);
  await saper.press('Enter');
 
 await this.sampleid.click()
 const sapid = this.page.locator('.tabulator-editing input');
-await sapid.fill('4321');
+await sapid.fill(sktp.sampleidi);
 await sapid.press('Enter');
 
 await this.sampledescrption.click()
 const sapdesc = this.page.locator('.tabulator-editing input');
-await sapdesc.fill('testsktp');
+await sapdesc.fill(sktp.sampledescrptioni);
 await sapdesc.press('Enter');
 
 await this.samplelootno.click()
 const loot = this.page.locator('.tabulator-editing input');
-await loot.fill('654');
+await loot.fill(sktp.samplelootnoi);
 await loot.press('Enter');
 
 await this.protocolno.click()
 const prtno = this.page.locator('.tabulator-editing input');
-await prtno.fill('test488');
+await prtno.fill(sktp.protocolnoi);
 await prtno.press('Enter');
 
 await this.storageconditon.click()
 const strg = this.page.locator('.tabulator-editing input');
-await strg.fill('5C');
+await strg.fill(sktp.storageconditoni);
 await strg.press('Enter');
 
 await this.comments.click()
 const cmnt = this.page.locator('.tabulator-editing input');
-await cmnt.fill('testbcp');
+await cmnt.fill(sktp.commentsi);
 await cmnt.press('Enter');
 
 
 await this.testing.click()
 const test = this.page.locator('.tabulator-editing input');
-await test.fill('TAS');
+await test.fill(sktp.testingi);
 await test.press('Enter');
 
 
@@ -197,29 +207,6 @@ await this.savveandproceed.click();
 
 }
 
-// async sampleinformation(quant,sample,sunit,contvalue,contunit,conttype,sap,loot,sdescpt,slotter,prt,storage,cmnt,test){
-// //   await this.quantity.fill(quant);
-// //   await this.samplevolume.fill(sample);
-// //   await this.page.waitForTimeout(2000);
-// //   await this.sammpleunits.selectoption(sunit);
-// //   await this.conainervolume.fill(contvalue);
-// //   await this.page.waitForTimeout(2000);
-// //   await this.containertype.selectoption(contunit);
-// //   await this.page.waitForTimeout(2000);
-// //   await this.sampleid.selectoption(conttype);
-// //   await this.sampledescrption.fill(sap);
-// //   await this.samplelootno.fill(loot);
-// //   await this.sampledescrption.fill(sdescpt);
-// //   await this.samplelootno.fill(slotter);
-// //   await this.protocolno.fill(prt);
-// //   await this.page.waitForTimeout(2000);
-// //   await this.storageconditon.selectoption(storage);
-// //   await this.comments.fill(cmnt);
-// //   await this.page.waitForTimeout(2000);
-// //   await this.testing.selectoption(test);
-// //   await this.savveandproceed.click();
-
-// } 
 
 }
 

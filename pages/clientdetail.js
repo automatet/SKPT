@@ -28,8 +28,7 @@ class clientpage{
 
     }
   async verifySuccessMessage() {
-    await expect(this.successMessage)
-      .toContainText('Client details added successfully.');
+    await expect(this.successMessage).toContainText('Client details added successfully.');
   }
     
 }
