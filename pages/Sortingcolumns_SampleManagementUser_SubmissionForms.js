@@ -1,7 +1,9 @@
 import { expect } from '@playwright/test';
 
 class SampleManagementUserSort {
+
     constructor(page){
+        
     this.page=page;
     //this.FormID_Sort = page.locator("//div[contains(text(),'Form ID')]").first();;
     this.FormID_Sort = page.locator("//div[contains(text(),'Form ID')]/ancestor::div//div[@class='tabulator-col-sorter']").first();
