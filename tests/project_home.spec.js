@@ -27,4 +27,16 @@ test('Create internal form', async ({page})=>{
     
  
 })
+
+test('Create internal form with assertions', async ({page})=>{
  
+  const loginuser = new LoginPage(page)
+    await loginuser.login(LoginData.internaluser)   
+    await expect(page).toHaveURL(LoginData.internalurl)
+
+    
+    const Internal = new Internalproject(page)
+    await Internal.formidAssertions()
+    await expect(page.locator("//small[normalize-space()='Planned Submission/Shipping Date is required.']")).toBeVisible();
+
+ })

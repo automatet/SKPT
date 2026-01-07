@@ -15,6 +15,7 @@ class Projecthome{
         this.NewrequestID = page.locator("//button[contains(text(),' New Request ')]")
         this.Shippingdate = page.locator("//i[@class='bi bi-calendar']")
         this.date = page.locator("//div[@class='ngb-dp-day ngb-dp-today']")
+        this.DateField = page.locator("//input[@placeholder='DD-MMM-YYYY']")
         this.PONumber = page.locator("//input[@placeholder='Enter PO Number']")
         this.planNumber = page.locator("//input[@formcontrolname='samplingPlanNumber']")
         this.DetailComment = page.locator("//textarea[@placeholder='Make a comment']")
@@ -57,10 +58,18 @@ class Projecthome{
         this.StorageCondition = page.locator("//div[@role='gridcell' and @tabulator-field='storageCondition']")
         this.Terms$Condition = page.locator("//input[@id='terms-conditions']")
         this.FinalSubmit = page.locator("//button[normalize-space()='Submit' and @id='submit-button']")
-     
+        this.Searchbar = page.locator("//input[@aria-label='Search Something']")
+        this.saveBtn = this.page.getByRole('button', { name: 'Save and Proceed' });
+this.DateValidation = page.locator("//small[normalize-space()='Planned Submission/Shipping Date is required.']")
+     this.saveBtnOne = this.page.getByRole('button', { name: 'Save and Proceed' });
        }   
        async formid(){
     
+      await this.Searchbar.fill('4')
+      //const Search = this.page.locator('.tabulator-editing input');
+//await Search.fill('4');
+await this.Searchbar.press('Enter');
+
       await this.project_ID.click();
       await this.NewrequestID.click();
       //await this.form_ID.click();
@@ -158,6 +167,18 @@ await this.SampInfoSave.click();
 await this.Terms$Condition.click();
 await this.FinalSubmit.click();
  }
+ async formidAssertions(){
+      await this.Searchbar.fill('4');
+await this.Searchbar.press('Enter');
+ await this.project_ID.click();
+      await this.NewrequestID.click();
+      await expect(this.saveBtn).toBeDisabled();
+      await this.Shippingdate.click();
+      await this.date.click();
+      await this.DateField.clear();
+      await this.SubmissionSave.click();
+      
+}
      
 }
  
