@@ -50,7 +50,7 @@ await expect(this.successMessage.first()).toBeVisible();
 
 
 
-//await this.page.waitForTimeout(3000);
+
 } 
 
 async searchproject(projectid)
