@@ -17,7 +17,7 @@ import LoginData from '../loginData.json'
         this.clickProjectID=page.locator("//button[contains(text(),'prer_11113')]")
         this.clickFormId=page.locator("//button[contains(text(),'FID1191')]")
         this.proceedbtn = page.locator("//button[contains(text(),' Save and Proceed ')]")
-        this.proceedbtn1 = page.locator("//button[contains(text(),' Save and Proceed')]")
+        //this.proceedbtn1 = page.locator("//button[contains(text(),' Save and Proceed')]")
         this.submitbtn = page.locator("//button[@id='submit-button']")
         this.verifyConfirmation=page.getByRole('heading', { name: 'Confirmation' })
         this.clickNo=page.locator("//button[contains(text(),' No')]")
@@ -28,35 +28,45 @@ import LoginData from '../loginData.json'
 
     async click_Client(){
         await this.clickClient.click()
+        await this.page.waitForTimeout(3000);
     }
     async client_form(){
+        await this.searchButton.click()
+        await this.searchButton.fill('kavit')
         await this.ClickClientname.click()
+        await this.page.waitForTimeout(3000);
     }
     async click_internal(){
         await this.clickInternal.click()
+        await this.page.waitForTimeout(3000);
     }
-    async  rem(){  
+    async  click_search(){  
         await this.searchButton.click()
         await this.searchButton.fill('prer_')
         await this.clickProjectID.click()
         await this.clickFormId.click()
-         
+         await this.page.waitForTimeout(3000);
 
     }
     async click_proceed(){
             await this.proceedbtn.click()
+            await this.page.waitForTimeout(3000);
          }
     async click_proceed1(){
-            await this.proceedbtn1.click()
+            await this.proceedbtn.click()
+            await this.page.waitForTimeout(3000);
          }
     async click_proceed2(){
-            await this.proceedbtn1.click()
+            await this.proceedbtn.click()
+            await this.page.waitForTimeout(5000);
          }
     async click_proceed3(){
-            await this.proceedbtn1.click()
+            await this.proceedbtn.click()
+            await this.page.waitForTimeout(3000);
          }
     async click_proceed4(){
-            await this.proceedbtn1.click()
+            await this.proceedbtn.click()
+            await this.page.waitForTimeout(3000);
          }
 
     async click_submit(){
