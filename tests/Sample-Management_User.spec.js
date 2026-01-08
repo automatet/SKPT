@@ -8,10 +8,11 @@ import SampleUserError from '../pages/SampleManagementUserError.js'
 import EditSampleManagementUserSubform from '../pages/EditSampleUsermanagement_SubmissionForms.js'
 import SubmittedtoRevision from '../pages/SampleManagementUser_ChangedstatusSubmittedtoRevision.js'
 import ReceivedStatusLIMSProjectIDgraph from '../pages/ReceivedStateLIMSProjectIDgraph.js'
+import SampleManagementUserSort from '../pages/Sortingcolumns_SampleManagementUser_SubmissionForms.js'
 
 test('Test Sample manager add LIMS Project ID successfully', async ({page})=>{
  
-  const loginuser = new LoginPage(page)
+   const loginuser = new LoginPage(page)
 
     await loginuser.login(LoginData.sampleuser)   
     await expect(page).toHaveURL(LoginData.sampleurl)
@@ -33,7 +34,7 @@ test('Test Sample manager add LIMS Project ID successfully', async ({page})=>{
 
 test('Test user gets This LIMS Project ID already exists under another project error message', async ({page})=>{
  
-  const loginuser = new LoginPage(page)
+   const loginuser = new LoginPage(page)
 
     await loginuser.login(LoginData.sampleuser)   
     await expect(page).toHaveURL(LoginData.sampleurl)
@@ -54,7 +55,7 @@ test('Test user gets This LIMS Project ID already exists under another project e
 
 test('Test Sample manager Edit LIMS Project ID Successfully', async ({page})=>{
  
-  const loginuser = new LoginPage(page)
+   const loginuser = new LoginPage(page)
 
     await loginuser.login(LoginData.sampleuser)   
     await expect(page).toHaveURL(LoginData.sampleurl)
@@ -79,7 +80,7 @@ test('Test Sample manager Edit LIMS Project ID Successfully', async ({page})=>{
 
 test('Test Sample manager changes state from Submitted to InRevision State', async ({page})=>{
  
-  const loginuser = new LoginPage(page)
+   const loginuser = new LoginPage(page)
 
     await loginuser.login(LoginData.sampleuser)   
     await expect(page).toHaveURL(LoginData.sampleurl)
@@ -94,7 +95,7 @@ test('Test Sample manager changes state from Submitted to InRevision State', asy
 })
 
 test('Test Sample manager clicks on LIMS Project ID for Received state to view graph', async ({page})=>{
-    const loginuser = new LoginPage(page)
+     const loginuser = new LoginPage(page)
 
     await loginuser.login(LoginData.sampleuser)   
     await expect(page).toHaveURL(LoginData.sampleurl)
@@ -106,3 +107,25 @@ test('Test Sample manager clicks on LIMS Project ID for Received state to view g
     await ObjLIMSProjectIDReceivedbtngraph.User_clickson_PlusMinusbtngraph_ReceivedState();
 
 }) 
+
+test('Test Sample manager able to Sort Out columns', async ({page})=>{
+ 
+   const loginuser = new LoginPage(page)
+
+    await loginuser.login(LoginData.sampleuser)   
+    await expect(page).toHaveURL(LoginData.sampleurl)
+
+    const ObjSubmissionFormPage = new SubmissionFormsPage(page);
+    await ObjSubmissionFormPage.user_verifies_Submission_Forms_page_is_visible();
+
+    const ObjSubmissionFormSortPage = new SampleManagementUserSort(page);
+    await ObjSubmissionFormSortPage.user_clickson_FormsIDSort();
+    await ObjSubmissionFormSortPage.user_clickson_SubmissionDateSort();
+    await ObjSubmissionFormSortPage.user_clickson_LIMSProjectIDSort();
+    await ObjSubmissionFormSortPage.user_clickson_ClientNameSort();
+    await ObjSubmissionFormSortPage.user_clickson_StatusSort();
+    await ObjSubmissionFormSortPage.user_clickson_ProjectNamesort();
+    await ObjSubmissionFormSortPage.user_clickson_InternalProjectsort();
+
+
+})
