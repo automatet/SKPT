@@ -14,6 +14,7 @@ class LoginPage{
     }
     async login(username) {
     await this.page.goto(LoginData.url)
+    await this.page.waitForTimeout(5000);
     await this.useremail.fill(username);
     await this.userpasword.fill(LoginData.password);
     await this.loginbtn.click();
