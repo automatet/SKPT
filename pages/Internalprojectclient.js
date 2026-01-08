@@ -81,7 +81,7 @@ async externalproject() {
    await this.externalproject_search.click()
    await this.externalproject_search.fill('First client2');
 
-await this.page.waitForTimeout(3000);
+
 await this.externalproject_clientname.click()
 await this.externalproject_addproject.click()
 await this.externalproject_projectid.click()
