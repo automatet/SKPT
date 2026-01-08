@@ -43,15 +43,26 @@ this.special_disposal=page.locator('//input[@formcontrolname="specialDisposal"]'
 this.saveandproceed=page.locator("//button[@class='btn rounded-button rounded-button-small btn-primary btn-save' and contains(normalize-space(), 'Save and Proceed')]")
 //Section C Shipping
 this.shippingcondition=page.locator('//input[@id="shippingConditionIcepack"]')
-this.name_trackingno=page.locator('//input[@class="form-control ng-pristine ng-valid ng-touched"]')
+//this.name_trackingno=page.locator('//input[@class="form-control ng-pristine ng-valid ng-touched"]')
 this.shipping=page.locator('//input[@id="shipmentPackagingDispositionNoTemplateIncluded"]')
 this.saveandprocess=page.locator("//button[@class='btn rounded-button rounded-button-small btn-primary btn-save' and contains(normalize-space(), 'Save and Proceed')]")
 //Section D Sample information
-this.quanitiy=page.locator("//div[contains(@class,'tabulator-cell') and @tabulator-field='quantity']")
-this.samplevolume=page.locator('//div[@tabulator-field="sampleVolume"]')
-this.sampleunit=page.locator("//div[contains(@class,'tabulator-cell') and @tabulator-field='sampleVolume']")
+  this.quantity = page.locator("//div[contains(@class,'tabulator-cell') and @tabulator-field='quantity']")
+        this.samplevolume =page.locator("//div[contains(@class,'tabulator-cell') and @tabulator-field='sampleVolume']")
+        this.sammpleunits = page.locator("//div[contains(@class,'tabulator-cell') and @tabulator-field='sampleUnits']")  //drop
+        this.conainervolume =page.locator("//div[contains(@class,'tabulator-cell') and @tabulator-field='containerVolume']")
+        this.containerunit =page.locator("//div[contains(@class,'tabulator-cell') and @tabulator-field='containerUnit']") //drop
+        this.containertype =page.locator("//div[contains(@class,'tabulator-cell') and @tabulator-field='containerType']")  //drop
+        this.sampleid =page.locator("//div[contains(@class,'tabulator-cell') and @tabulator-field='clientSampleID']")
+        this.sampledescrption = page.locator("//div[contains(@class,'tabulator-cell') and @tabulator-field='sampleDescription']")
+        this.samplelootno =page.locator("//div[contains(@class,'tabulator-cell') and @tabulator-field='sampleLotNumber']")
+        this.protocolno =page.locator("//div[contains(@class,'tabulator-cell') and @tabulator-field='protocolNameAndNumber']")
+        this.storageconditon= page.locator("//div[contains(@class,'tabulator-cell') and @tabulator-field='storageCondition']") //drop
+        this.comments= page.locator("//div[contains(@class,'tabulator-cell') and @tabulator-field='comments']")
+       this.savveandproceed = page.locator("//button[normalize-space()= 'Save and Proceed']")
 
     }
+
 async platformuser_login(){
 
         await this.useremail.fill(LoginData.platformuser)
@@ -128,27 +139,73 @@ await this.special_disposal.fill('handle carefully')
 await this.saveandproceed.click()
 //section C
 await this.shippingcondition.click()
-
-await this.page.waitForTimeout(3000)
-await this.name_trackingno.click()
-await this.name_trackingno.fill('1223no. and handle carefully')
 await this.shipping.click()
 await this.saveandprocess.click()
+
 //Section D
-await this.quanitiy.click();
+await this.quantity.click();
+const quantityEditor = this.page.locator('.tabulator-editing input');
+await quantityEditor.fill('12');
+await quantityEditor.press('Enter');
+ 
+await this.samplevolume.click();
+const sampleedit=this.page.locator('.tabulator-editing input');
+await sampleedit.fill('22');
+await sampleedit.press('Enter');
+ 
+await this.sammpleunits.click();
+const samplefill =this.page.locator('.tabulator-editing input');
+await samplefill.fill('ea');
+await samplefill.press('Enter');
+ 
+await this.conainervolume.click()
+const container =this.page.locator('.tabulator-editing input');
+await container.fill('11');
+await container.press('Enter');
+ 
+   await this.containerunit.click()
+   const contedunit =this.page.locator('.tabulator-editing input');
+   await contedunit.fill('ea');
+   await contedunit.press('Enter');
+ 
+await this.containertype.click()
+const conttype = this.page.locator('.tabulator-editing input');
+await conttype.fill('bags');
+await conttype.press('Enter');
+ 
 
-const quanitiy = Math.floor(1000 + Math.random() * 9000).toString();
-await this.quanitiy.fill(quanitiy);
-await this.quanitiy.press('Tab');
-
-await this.samplevolume.click()
-const sampleVolume =Math.floor(1000 + Math.random()*9000).toString();
-await this.samplevolume.fill(sampleVolume)
-await this.samplevolume.press('Tab');
-
-await this.sampleunit.click()
-await this.sampleunit.selectOption({label: 'uL'})
-await this.sampleunit.press('Tab')
+ 
+await this.sampleid.click()
+const sapid = this.page.locator('.tabulator-editing input');
+await sapid.fill('77');
+await sapid.press('Enter');
+ 
+await this.sampledescrption.click()
+const sapdesc = this.page.locator('.tabulator-editing input');
+await sapdesc.fill('88');
+await sapdesc.press('Enter');
+ 
+await this.samplelootno.click()
+const loot = this.page.locator('.tabulator-editing input');
+await loot.fill('75');
+await loot.press('Enter');
+ 
+await this.protocolno.click()
+const prtno = this.page.locator('.tabulator-editing input');
+await prtno.fill('55');
+await prtno.press('Enter');
+ 
+await this.storageconditon.click()
+const strg = this.page.locator('.tabulator-editing input');
+await strg.fill('-20C');
+await strg.press('Enter');
+ 
+await this.comments.click()
+const cmnt = this.page.locator('.tabulator-editing input');
+await cmnt.fill('all set');
+await cmnt.press('Enter');
+ 
+await this.savveandproceed.click()
 
 
 }
