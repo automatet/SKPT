@@ -18,7 +18,7 @@ class LoginPage{
     await this.useremail.fill(username);
     await this.userpasword.fill(LoginData.password);
     await this.loginbtn.click();
-    await this.page.waitForTimeout(5000);
+    await this.page.waitForTimeout(3000);
     }
 
     
